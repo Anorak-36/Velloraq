@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+!.env.local.example
+!.env.production.example
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*.json
+*service-account*.json
+
+# Runtime artifacts
+reports/
+logs/
+tmp/
+tmp*/
+.test-runtime/
+*.log
+*.sqlite
+*.sqlite3
+*.db
+
+# Docker/local state
+postgres_data/
+docker/postgres_data/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

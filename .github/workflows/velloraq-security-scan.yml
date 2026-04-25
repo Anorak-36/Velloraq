@@ -1,0 +1,41 @@
+name: Velloraq Security Scan
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Velloraq
+        run: python -m pip install -e ".[aws]"
+
+      - name: Run Velloraq
+        run: |
+          velloraq scan \
+            --provider aws \
+            --region "${AWS_REGION:-us-east-1}" \
+            --dependency-manifest requirements.txt \
+            --format all \
+            --output reports \
+            --fail-on High
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: velloraq-reports
+          path: reports/

@@ -1,0 +1,61 @@
+# Velloraq configuration example.
+# Copy this file to config.yaml and adjust it for your environment.
+# Do not store secrets, access tokens, API keys, private keys, or customer data here.
+
+providers:
+  - source
+  # - aws
+  # - azure
+  # - gcp
+
+regions:
+  - eu-west-1
+  - us-central1
+
+provider_profiles:
+  aws:
+    profile: velloraq-readonly
+  azure:
+    subscriptions:
+      - 00000000-0000-0000-0000-000000000000
+  gcp:
+    projects:
+      - my-project
+
+source_paths:
+  - examples/vulnerable_lambda.py
+
+dependency_manifests:
+  - examples/requirements-vulnerable.txt
+
+plugin_dirs:
+  - examples/sample_plugin.py
+
+formats:
+  - json
+  - html
+  - siem
+
+output: reports
+inventory: false
+verbose: false
+
+nvd: false
+nvd_api_key: null
+
+# Only include findings at or above this severity.
+# Allowed: Low, Medium, High, Critical
+min_severity: Low
+
+# CI/CD gate. Leave null to avoid non-zero exit codes based on findings.
+fail_on: null
+
+# Empty enabled_rules means all loaded rules are eligible.
+enabled_rules: []
+
+disabled_rules:
+  # - DEP-*
+
+exclude_resources:
+  # - arn:aws:s3:::dev-public-assets-*
+  # - projects/example-dev/*

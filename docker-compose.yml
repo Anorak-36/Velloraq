@@ -1,0 +1,57 @@
+name: velloraq
+
+services:
+  velloraq-db:
+    container_name: velloraq-db
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-velloraq}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me-local-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-velloraq}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-velloraq} -d ${POSTGRES_DB:-velloraq}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  velloraq-api:
+    container_name: velloraq-api
+    image: velloraq-api:latest
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      VELLORAQ_DATABASE_URL: ${VELLORAQ_DATABASE_URL:-postgresql+pg8000://velloraq:change-me-local-postgres@velloraq-db:5432/velloraq}
+    ports:
+      - "8000:8000"
+    volumes:
+      - reports_data:/app/reports
+    depends_on:
+      velloraq-db:
+        condition: service_healthy
+
+  velloraq-worker:
+    container_name: velloraq-worker
+    image: velloraq-worker:latest
+    build:
+      context: .
+      dockerfile: docker/worker.Dockerfile
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      VELLORAQ_DATABASE_URL: ${VELLORAQ_DATABASE_URL:-postgresql+pg8000://velloraq:change-me-local-postgres@velloraq-db:5432/velloraq}
+    volumes:
+      - reports_data:/app/reports
+    depends_on:
+      velloraq-db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  reports_data:

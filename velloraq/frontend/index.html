@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Velloraq</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Velloraq</h1>
+      <span id="session-label">Signed out</span>
+    </div>
+    <button id="logout-button" class="ghost hidden" type="button">Logout</button>
+  </header>
+
+  <main>
+    <section id="auth-panel" class="panel auth-grid">
+      <form id="login-form" class="form">
+        <h2>Login</h2>
+        <label>Email<input id="login-email" type="email" autocomplete="email" required></label>
+        <label>Password<input id="login-password" type="password" autocomplete="current-password" required></label>
+        <button type="submit">Login</button>
+      </form>
+
+      <form id="register-form" class="form">
+        <h2>Register</h2>
+        <label>Email<input id="register-email" type="email" autocomplete="email" required></label>
+        <label>Password<input id="register-password" type="password" autocomplete="new-password" minlength="12" required></label>
+        <button type="submit">Create account</button>
+      </form>
+    </section>
+
+    <section id="app-panel" class="hidden layout">
+      <aside class="panel form">
+        <h2>Launch Scan</h2>
+        <label>Providers
+          <select id="scan-providers" multiple>
+            <option value="source" selected>source</option>
+            <option value="aws">aws</option>
+            <option value="azure">azure</option>
+            <option value="gcp">gcp</option>
+          </select>
+        </label>
+        <label>Regions<input id="scan-regions" placeholder="eu-west-1,us-central1"></label>
+        <label>Source paths<input id="scan-source-paths" value="examples/vulnerable_lambda.py"></label>
+        <label>Dependency manifests<input id="scan-manifests" placeholder="requirements.txt"></label>
+        <label>Minimum severity
+          <select id="scan-min-severity">
+            <option value="">All</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Critical">Critical</option>
+          </select>
+        </label>
+        <label>Disabled rules<input id="scan-disabled-rules" placeholder="DEP-*"></label>
+        <label>Excluded resources<input id="scan-exclusions" placeholder="dev-*"></label>
+        <label class="check"><input id="scan-inventory" type="checkbox"> Include inventory</label>
+        <button id="launch-scan" type="button">Launch scan</button>
+      </aside>
+
+      <section class="workspace">
+        <div class="panel">
+          <div class="section-head">
+            <h2>Scan History</h2>
+            <button id="refresh-scans" class="ghost" type="button">Refresh</button>
+          </div>
+          <div id="scan-list" class="scan-list"></div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <h2>Results</h2>
+            <div id="result-actions" class="actions hidden">
+              <button id="view-findings" class="link-button hidden" type="button">View Findings</button>
+              <button id="view-report" class="link-button" type="button">View HTML Report</button>
+              <button id="download-report" class="link-button" type="button">Download HTML Report</button>
+              <button id="view-json" class="link-button" type="button">View JSON</button>
+            </div>
+          </div>
+          <div id="summary" class="summary"></div>
+          <div id="findings" class="findings"></div>
+          <div id="report-preview-panel" class="report-preview hidden">
+            <div class="section-head">
+              <h2>HTML Report Preview</h2>
+              <span id="report-status" class="muted"></span>
+            </div>
+            <iframe
+              id="report-frame"
+              title="HTML scan report"
+              sandbox
+              referrerpolicy="no-referrer"></iframe>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

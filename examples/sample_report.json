@@ -1,0 +1,55 @@
+{
+  "scanner": "velloraq",
+  "started_at": "2026-04-25T10:00:00+00:00",
+  "completed_at": "2026-04-25T10:00:04+00:00",
+  "providers": [
+    "aws"
+  ],
+  "regions": [
+    "eu-west-1"
+  ],
+  "summary": {
+    "total_findings": 3,
+    "by_severity": {
+      "Low": 0,
+      "Medium": 1,
+      "High": 1,
+      "Critical": 1,
+      "Info": 0
+    },
+    "resources_scanned": 8,
+    "warnings": 0
+  },
+  "findings": [
+    {
+      "finding_id": "example-1",
+      "title": "S3 bucket is publicly accessible",
+      "provider": "aws",
+      "service": "s3",
+      "resource_id": "arn:aws:s3:::public-assets-prod",
+      "resource_name": "public-assets-prod",
+      "severity": "Critical",
+      "description": "The S3 bucket appears public through bucket policy, ACL grants, or missing public access block controls.",
+      "recommendation": "Enable S3 Block Public Access, remove public ACL grants, and restrict bucket policies to trusted principals.",
+      "rule_id": "AWS-S3-001",
+      "category": "Storage",
+      "standard_refs": [
+        "CIS AWS Foundations",
+        "OWASP Cloud-Native Application Security"
+      ],
+      "region": "eu-west-1",
+      "account_id": "123456789012",
+      "project_id": null,
+      "subscription_id": null,
+      "evidence": [
+        {
+          "key": "public_signals",
+          "value": [
+            "bucket_policy_public"
+          ]
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}

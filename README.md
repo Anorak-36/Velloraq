@@ -103,8 +103,8 @@ Optional cloud tooling:
 Linux/macOS:
 
 ```bash
-git clone https://github.com/velloraq/velloraq.git
-cd velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+cd Velloraq
 cp .env.example .env
 python -c "import secrets; print(secrets.token_urlsafe(48))"
 ```
@@ -118,8 +118,8 @@ docker compose up --build
 Windows CMD:
 
 ```cmd
-git clone https://github.com/velloraq/velloraq.git
-cd velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+cd Velloraq
 copy .env.example .env
 python -c "import secrets; print(secrets.token_urlsafe(48))"
 notepad .env
@@ -129,8 +129,8 @@ docker compose up --build
 Windows PowerShell:
 
 ```powershell
-git clone https://github.com/velloraq/velloraq.git
-Set-Location velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+Set-Location Velloraq
 Copy-Item .env.example .env
 python -c "import secrets; print(secrets.token_urlsafe(48))"
 notepad .env
@@ -157,8 +157,8 @@ Replace those values before starting a shared instance.
 Docker path:
 
 ```bash
-git clone https://github.com/velloraq/velloraq.git
-cd velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+cd Velloraq
 cp .env.local.example .env
 python -c "import secrets; print(secrets.token_urlsafe(48))"
 nano .env
@@ -168,8 +168,8 @@ docker compose up --build
 CLI-only path:
 
 ```bash
-git clone https://github.com/velloraq/velloraq.git
-cd velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+cd Velloraq
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install --upgrade pip
@@ -189,8 +189,8 @@ brew install python
 Docker path:
 
 ```bash
-git clone https://github.com/velloraq/velloraq.git
-cd velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+cd Velloraq
 cp .env.local.example .env
 python3 -c "import secrets; print(secrets.token_urlsafe(48))"
 nano .env
@@ -210,8 +210,8 @@ velloraq scan --provider source --source-path examples/vulnerable_lambda.py --fo
 ## 9. Windows CMD Installation
 
 ```cmd
-git clone https://github.com/velloraq/velloraq.git
-cd velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+cd Velloraq
 py -3 -m venv .venv
 .venv\Scripts\activate.bat
 python -m pip install --upgrade pip
@@ -239,8 +239,8 @@ scripts\test.cmd
 ## 10. Windows PowerShell Installation
 
 ```powershell
-git clone https://github.com/velloraq/velloraq.git
-Set-Location velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+Set-Location Velloraq
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
@@ -276,8 +276,8 @@ winget install Git.Git
 Install a Docker runtime supported by your Windows Server baseline. Then:
 
 ```powershell
-git clone https://github.com/velloraq/velloraq.git
-Set-Location velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+Set-Location Velloraq
 Copy-Item .env.production.example .env
 python -c "import secrets; print(secrets.token_urlsafe(48))"
 notepad .env
@@ -299,8 +299,8 @@ Windows Server production checklist:
 Linux/macOS:
 
 ```bash
-git clone https://github.com/velloraq/velloraq.git
-cd velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+cd Velloraq
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install --upgrade pip
@@ -313,8 +313,8 @@ nano .env
 Windows PowerShell:
 
 ```powershell
-git clone https://github.com/velloraq/velloraq.git
-Set-Location velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+Set-Location Velloraq
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
@@ -584,8 +584,8 @@ velloraq scan --provider source --source-path . --format all --output reports --
 Linux/macOS server:
 
 ```bash
-git clone https://github.com/velloraq/velloraq.git
-cd velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+cd Velloraq
 cp .env.production.example .env
 python3 -c "import secrets; print(secrets.token_urlsafe(48))"
 nano .env
@@ -597,8 +597,8 @@ docker compose ps
 Windows PowerShell server:
 
 ```powershell
-git clone https://github.com/velloraq/velloraq.git
-Set-Location velloraq
+git clone https://github.com/Anorak-36/Velloraq.git
+Set-Location Velloraq
 Copy-Item .env.production.example .env
 python -c "import secrets; print(secrets.token_urlsafe(48))"
 notepad .env
